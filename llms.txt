@@ -15,7 +15,8 @@
 | llms.txt | /llms.txt |
 | skill.md | /skill.md |
 | mcp.json | /.well-known/mcp.json |
-| A2A Agent Card | /.well-known/agent-card.json |
+| A2A Agent Card | https://sec-filings-mcp-1065601264332.us-central1.run.app/.well-known/agent-card.json |
+| mcp.json (repo) | https://sec-filings-mcp-1065601264332.us-central1.run.app/.well-known/mcp.json |
 
 ## A2A + MCP
 

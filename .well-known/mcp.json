@@ -19,6 +19,6 @@
     "mcp",
     "a2a"
   ],
-  "agentCard": "https://sec-edgar-filings.mcp.xpay.sh/.well-known/agent-card.json",
+  "agentCard": "https://sec-filings-mcp-1065601264332.us-central1.run.app/.well-known/agent-card.json",
   "registry": "io.github.stagproject/sec-filings-mcp"
 }

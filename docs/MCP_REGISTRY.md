@@ -4,6 +4,8 @@ Official registry: https://registry.modelcontextprotocol.io
 
 ## One-time setup (maintainer)
 
+Requires interactive GitHub login once per machine (`mcp-publisher login github` opens the browser).
+
 ```powershell
 # Install publisher CLI (Windows)
 curl.exe -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_windows_amd64.tar.gz" -o mcp-publisher.tar.gz
@@ -15,6 +17,8 @@ cd c:\AGS\mcp-server-finance
 .\mcp-publisher.exe publish --dry-run
 .\mcp-publisher.exe publish
 ```
+
+**Or** push tag `v1.0.1` — workflow `.github/workflows/publish-mcp.yml` uses `login github-oidc` (repo must allow OIDC to MCP Registry).
 
 ## Verify
 

@@ -53,7 +53,7 @@ Example tool call after connect:
 - GitHub: https://github.com/stagproject/sec-filings-mcp  
 - Glama: https://glama.ai/mcp/servers (search `sec-filings-mcp` / `stagproject`)  
 - MCP Registry: `io.github.stagproject/sec-filings-mcp`  
-- A2A Agent Card: `https://sec-edgar-filings.mcp.xpay.sh/.well-known/agent-card.json`  
+- A2A Agent Card: `https://sec-filings-mcp-1065601264332.us-central1.run.app/.well-known/agent-card.json`  
 - `llms.txt`, `skill.md`, `.well-known/mcp.json` on the xpay host
 
 ## License

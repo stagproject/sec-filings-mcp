@@ -24,7 +24,7 @@ API key: https://xpay.tools
 
 ## A2A discovery
 
-- Agent Card: `https://sec-edgar-filings.mcp.xpay.sh/.well-known/agent-card.json`
+- Agent Card: `https://sec-filings-mcp-1065601264332.us-central1.run.app/.well-known/agent-card.json` (xpay does not proxy `/.well-known/*`)
 - Skills: `search_filings`, `get_filing_sample`, `purchase_filing` (invoke via MCP URL above)
 - x402 extension: [a2a-x402 v0.2](https://github.com/google-agentic-commerce/a2a-x402/blob/main/spec/v0.2)
 

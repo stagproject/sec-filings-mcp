@@ -17,7 +17,7 @@ Template reference: `mcp_server.py` (patent MCP, unmodified). **Runtime:** `mcp_
 | Layer | How to use |
 |-------|------------|
 | **MCP (production)** | xpay URL below — `tools/call` on `search_filings`, `get_filing_sample`, `purchase_filing` |
-| **A2A (discovery)** | Agent Card: `https://sec-edgar-filings.mcp.xpay.sh/.well-known/agent-card.json` |
+| **A2A (discovery)** | Agent Card on Cloud Run upstream (xpay blocks `/.well-known/*`): `https://sec-filings-mcp-1065601264332.us-central1.run.app/.well-known/agent-card.json` |
 | **x402 (payment)** | `purchase_filing` — 402 + Polygon USDC + `tx_hash` redelivery |
 
 Native A2A JSON-RPC task API is on the roadmap; today agents invoke via **MCP Streamable HTTP**. Details: [docs/A2A.md](docs/A2A.md).

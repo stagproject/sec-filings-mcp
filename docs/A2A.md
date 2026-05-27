@@ -7,7 +7,7 @@ How this server fits the **agent protocol stack** (2026).
 | Layer | Protocol | This project |
 |-------|----------|--------------|
 | Tool use | **MCP** (Streamable HTTP) | **Production API** — xpay + Cloud Run |
-| Discovery | **A2A Agent Card** | `/.well-known/agent-card.json` on xpay + upstream |
+| Discovery | **A2A Agent Card** | Cloud Run upstream `/.well-known/agent-card.json` (xpay returns 403 for `/.well-known/*`; `llms.txt` on xpay is auto-generated) |
 | Payment | **x402** (HTTP 402 + on-chain USDC) | `purchase_filing` (MPP v1.0 two-step) |
 | Agent-to-agent tasks | **A2A** JSON-RPC | **Roadmap** — card + skills today; task endpoint later |
 
@@ -29,7 +29,8 @@ Tools: `search_filings` → `get_filing_sample` → `purchase_filing`.
 
 ## A2A discovery
 
-- **Agent Card:** `https://sec-edgar-filings.mcp.xpay.sh/.well-known/agent-card.json`
+- **Agent Card (live):** `https://sec-filings-mcp-1065601264332.us-central1.run.app/.well-known/agent-card.json`
+- **Agent Card (git):** `https://raw.githubusercontent.com/stagproject/sec-filings-mcp/main/.well-known/agent-card.json`
 - **x402 extension declared:** [a2a-x402 v0.2](https://github.com/google-agentic-commerce/a2a-x402/blob/main/spec/v0.2)
 - **MCP extension:** primary invoke at `url` (Streamable HTTP)
 
