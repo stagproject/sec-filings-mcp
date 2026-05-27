@@ -1,8 +1,83 @@
 {
   "name": "SEC Filings Agent Marketplace",
+  "description": "SEC EDGAR structured filings for AI agents: search catalog, free sample preview, purchase full JSON via x402 USDC on Polygon. Primary invoke path is MCP Streamable HTTP (tools/call). Complements A2A discovery; native A2A JSON-RPC task API on roadmap.",
+  "protocolVersion": "0.3.0",
   "version": "1.0.0",
-  "description": "SEC EDGAR structured filings for AI agents. CompanyFacts metrics and evidence_verified causality_events. Pay-per-filing via x402 on Polygon.",
   "url": "https://sec-edgar-filings.mcp.xpay.sh/mcp",
+  "documentationUrl": "https://github.com/stagproject/sec-filings-mcp#readme",
+  "iconUrl": "https://github.com/stagproject.png",
+  "provider": {
+    "organization": "stagproject",
+    "url": "https://github.com/stagproject"
+  },
+  "capabilities": {
+    "streaming": true,
+    "pushNotifications": false,
+    "extensions": [
+      {
+        "uri": "https://github.com/google-agentic-commerce/a2a-x402/blob/main/spec/v0.2",
+        "description": "Paid filing delivery uses x402-style on-chain USDC settlement (MPP v1.0 via MCP purchase_filing).",
+        "required": false
+      },
+      {
+        "uri": "https://modelcontextprotocol.io/specification/2025-06-18",
+        "description": "Primary production API: MCP Streamable HTTP at url — tools search_filings, get_filing_sample, purchase_filing.",
+        "required": true
+      }
+    ]
+  },
+  "defaultInputModes": ["application/json", "text/plain"],
+  "defaultOutputModes": ["application/json"],
+  "supportedInterfaces": [
+    {
+      "url": "https://sec-edgar-filings.mcp.xpay.sh/mcp",
+      "transport": "HTTP+JSON",
+      "description": "MCP Streamable HTTP (xpay proxy). Append ?key=YOUR_XPAY_KEY."
+    },
+    {
+      "url": "https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp",
+      "transport": "HTTP+JSON",
+      "description": "MCP Streamable HTTP upstream (Cloud Run)."
+    }
+  ],
+  "securitySchemes": {
+    "xpayApiKey": {
+      "type": "apiKey",
+      "in": "query",
+      "name": "key",
+      "description": "xpay.tools API key for MCP proxy access"
+    }
+  },
+  "securityRequirements": [{ "xpayApiKey": [] }],
+  "skills": [
+    {
+      "id": "search_filings",
+      "name": "Search SEC filings catalog",
+      "description": "Lightweight catalog search on fi_listings_portfolio. Requires at least one filter (ticker, form_type, company_name, fiscal_period, cik). Returns agent_readiness_score and pagination.",
+      "tags": ["sec", "edgar", "10-k", "10-q", "search", "equity-research"],
+      "examples": [
+        "ticker=AAPL form_type=10-K limit=5",
+        "ticker=MSFT limit=10 offset=0"
+      ]
+    },
+    {
+      "id": "get_filing_sample",
+      "name": "Preview filing sample",
+      "description": "Free compact row from fi_listings_portfolio_compact (agent_summary + financial_metrics). No full alpha_signals until purchase.",
+      "tags": ["sec", "preview", "sample", "free"],
+      "examples": ["document_id=000000708426000023"]
+    },
+    {
+      "id": "purchase_filing",
+      "name": "Purchase full filing JSON",
+      "description": "MPP v1.0 x402: call with empty tx_hash for payment payload, broadcast USDC on polygon, recall with tx_hash for full fi_listings_portfolio JSON.",
+      "tags": ["sec", "purchase", "x402", "usdc", "polygon"],
+      "examples": [
+        "document_id=000000708426000023 network=polygon",
+        "document_id=... network=polygon tx_hash=0x..."
+      ]
+    }
+  ],
   "keywords": [
     "SEC",
     "EDGAR",
@@ -10,22 +85,12 @@
     "10-Q",
     "CompanyFacts",
     "x402",
-    "MCP"
+    "MCP",
+    "equity-research"
   ],
-  "capabilities": {
-    "tools": [
-      {
-        "name": "search_filings",
-        "description": "Search fi_listings_portfolio by ticker and form_type. Lightweight catalog rows."
-      },
-      {
-        "name": "get_filing_sample",
-        "description": "Free compact preview from fi_listings_portfolio_compact (agent_summary + financial_metrics)."
-      },
-      {
-        "name": "purchase_filing",
-        "description": "x402 purchase for full fi_listings_portfolio JSON including alpha_signals."
-      }
-    ]
+  "mcp": {
+    "transport": "streamable-http",
+    "connectUrl": "https://sec-edgar-filings.mcp.xpay.sh/mcp?key=YOUR_XPAY_KEY",
+    "registry": "io.github.stagproject/sec-filings-mcp"
   }
 }

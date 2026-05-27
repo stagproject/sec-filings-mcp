@@ -22,6 +22,12 @@ SEC EDGAR structured filing MCP for equity research agents, quants, and LLM work
 
 API key: https://xpay.tools
 
+## A2A discovery
+
+- Agent Card: `https://sec-edgar-filings.mcp.xpay.sh/.well-known/agent-card.json`
+- Skills: `search_filings`, `get_filing_sample`, `purchase_filing` (invoke via MCP URL above)
+- x402 extension: [a2a-x402 v0.2](https://github.com/google-agentic-commerce/a2a-x402/blob/main/spec/v0.2)
+
 ## Typical flow
 
 1. `search_filings` with `ticker` and optional `form_type`

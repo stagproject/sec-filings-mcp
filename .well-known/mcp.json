@@ -16,6 +16,9 @@
     "equity-research",
     "financial-metrics",
     "x402",
-    "mcp"
-  ]
+    "mcp",
+    "a2a"
+  ],
+  "agentCard": "https://sec-edgar-filings.mcp.xpay.sh/.well-known/agent-card.json",
+  "registry": "io.github.stagproject/sec-filings-mcp"
 }

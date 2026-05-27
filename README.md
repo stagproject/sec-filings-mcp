@@ -7,8 +7,20 @@ SEC EDGAR structured filing MCP for agents: **search_filings**, **get_filing_sam
 | Build / handoff | [MCP_FINANCE_BUILD.md](MCP_FINANCE_BUILD.md) |
 | Env template | [.env.example](.env.example) → copy to `.env` |
 | Glama | [glama.json](glama.json) (`maintainers: stagproject`); build fix: [GLAMA_BUILD.md](GLAMA_BUILD.md) |
+| A2A / x402 | [docs/A2A.md](docs/A2A.md) — Agent Card + payment mapping |
+| MCP Registry | `io.github.stagproject/sec-filings-mcp` — [docs/MCP_REGISTRY.md](docs/MCP_REGISTRY.md) |
 
 Template reference: `mcp_server.py` (patent MCP, unmodified). **Runtime:** `mcp_server_finance.py`.
+
+## Protocol stack (MCP + A2A + x402)
+
+| Layer | How to use |
+|-------|------------|
+| **MCP (production)** | xpay URL below — `tools/call` on `search_filings`, `get_filing_sample`, `purchase_filing` |
+| **A2A (discovery)** | Agent Card: `https://sec-edgar-filings.mcp.xpay.sh/.well-known/agent-card.json` |
+| **x402 (payment)** | `purchase_filing` — 402 + Polygon USDC + `tx_hash` redelivery |
+
+Native A2A JSON-RPC task API is on the roadmap; today agents invoke via **MCP Streamable HTTP**. Details: [docs/A2A.md](docs/A2A.md).
 
 ## Connect (public)
 
@@ -53,9 +65,15 @@ Set env vars from `.env` (not committed). Do not deploy `.env.cloudrun.yaml` to 
 
 ## Glama
 
-1. Push this repo (public) under `stagproject/sec-filings-mcp`.
-2. Wait for indexing at [glama.ai/mcp/servers](https://glama.ai/mcp/servers).
-3. **Claim ownership** with GitHub org/user `stagproject` (must match `glama.json` maintainers).
+Listed at [glama.ai/mcp/servers](https://glama.ai/mcp/servers) — search `sec-filings-mcp` / `stagproject`. Profile completion and Glama release done.
+
+## MCP Registry
+
+```text
+io.github.stagproject/sec-filings-mcp
+```
+
+Publish / update: [docs/MCP_REGISTRY.md](docs/MCP_REGISTRY.md). Search: https://registry.modelcontextprotocol.io
 
 ## License
 

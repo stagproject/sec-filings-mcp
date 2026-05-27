@@ -15,6 +15,13 @@
 | llms.txt | /llms.txt |
 | skill.md | /skill.md |
 | mcp.json | /.well-known/mcp.json |
+| A2A Agent Card | /.well-known/agent-card.json |
+
+## A2A + MCP
+
+- **Invoke (production):** MCP Streamable HTTP at Primary connection URL (tools/call).
+- **Discover (A2A):** Agent Card at `/.well-known/agent-card.json` — skills map to the three tools; x402 extension v0.2 declared.
+- **Registry:** `io.github.stagproject/sec-filings-mcp` on MCP Registry.
 
 ## Tools
 
