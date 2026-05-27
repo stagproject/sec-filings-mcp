@@ -1,0 +1,31 @@
+{
+  "name": "SEC Filings Agent Marketplace",
+  "version": "1.0.0",
+  "description": "SEC EDGAR structured filings for AI agents. CompanyFacts metrics and evidence_verified causality_events. Pay-per-filing via x402 on Polygon.",
+  "url": "https://sec-edgar-filings.mcp.xpay.sh/mcp",
+  "keywords": [
+    "SEC",
+    "EDGAR",
+    "10-K",
+    "10-Q",
+    "CompanyFacts",
+    "x402",
+    "MCP"
+  ],
+  "capabilities": {
+    "tools": [
+      {
+        "name": "search_filings",
+        "description": "Search fi_listings_portfolio by ticker and form_type. Lightweight catalog rows."
+      },
+      {
+        "name": "get_filing_sample",
+        "description": "Free compact preview from fi_listings_portfolio_compact (agent_summary + financial_metrics)."
+      },
+      {
+        "name": "purchase_filing",
+        "description": "x402 purchase for full fi_listings_portfolio JSON including alpha_signals."
+      }
+    ]
+  }
+}

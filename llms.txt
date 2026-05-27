@@ -1,0 +1,35 @@
+# SEC Filings Agent Marketplace — EDGAR Structured Data MCP
+
+> AI-ready SEC filing JSON (10-K, 10-Q, 8-K): CompanyFacts metrics, evidence_verified causality_events, agent summaries. Connect via xpay.tools (x402 + MCP).
+
+## Primary connection (xpay — recommended)
+
+- **MCP URL:** `https://sec-edgar-filings.mcp.xpay.sh/mcp?key=YOUR_XPAY_KEY`
+- **Get API key:** https://xpay.tools
+- **Discover:** `xpay_discover(query: "SEC EDGAR 10-K CompanyFacts")` on `https://mcp.xpay.sh/mcp?key=YOUR_XPAY_KEY`
+
+## Machine-readable discovery
+
+| File | Path |
+|------|------|
+| llms.txt | /llms.txt |
+| skill.md | /skill.md |
+| mcp.json | /.well-known/mcp.json |
+
+## Tools
+
+- **search_filings** — Catalog search on `fi_listings_portfolio` (ticker, form_type). Lightweight columns only.
+- **get_filing_sample** — Free compact preview (`fi_listings_portfolio_compact`): summary + metrics, no full alpha_signals.
+- **purchase_filing** — x402 USDC on Polygon for full `fi_listings_portfolio` row (causality_events + metrics).
+
+## Payment workflow (MPP v1.0)
+
+1. Call `purchase_filing` with empty `tx_hash` → `status: 402` + `transaction_payload`.
+2. Broadcast on `polygon` (USDC).
+3. Recall with `tx_hash` for full JSON delivery.
+
+## Data notes
+
+- Metrics: SEC **CompanyFacts** (XBRL-derived).
+- Narrative: **causality_events** with `evidence_verified` and EDGAR quotes.
+- Do not expose `agent_bundle`, `r2_url`, or raw warehouse inventory language.

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://glama.ai/mcp/schemas/server.json",
+  "name": "sec-filings-mcp",
+  "description": "SEC EDGAR filing MCP: 10-K, 10-Q, CompanyFacts metrics, evidence_verified causality_events. x402 USDC on Polygon. Listed on xpay.tools.",
+  "keywords": [
+    "sec",
+    "edgar",
+    "10-k",
+    "10-q",
+    "companyfacts",
+    "equity-research",
+    "financial-data",
+    "x402",
+    "mcp",
+    "search",
+    "database"
+  ],
+  "maintainers": [
+    "stagproject"
+  ]
+}

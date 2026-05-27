@@ -1,0 +1,12 @@
+.env
+.env2
+.env.cloudrun
+.env.cloudrun.yaml
+.venv/
+__pycache__/
+*.pyc
+downloaded_*.json
+test_result_*.json
+test_results/
+gcp_credentials.json
+.mcpregistry_*
