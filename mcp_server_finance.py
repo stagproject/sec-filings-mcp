@@ -629,6 +629,11 @@ if __name__ == "__main__":
         port = int(os.environ.get("PORT", 8080))
         mcp_asgi_app = mcp.streamable_http_app()
 
+        async def ping_handler(request):
+            from starlette.responses import JSONResponse
+
+            return JSONResponse({"status": "ok"})
+
         async def root_handler(request):
             from starlette.responses import JSONResponse
 
@@ -674,6 +679,7 @@ if __name__ == "__main__":
         app = Starlette(
             lifespan=mcp_asgi_app.router.lifespan_context,
             routes=[
+                Route("/ping", endpoint=ping_handler, methods=["GET"]),
                 Route("/", endpoint=root_handler, methods=["GET", "POST"]),
                 Route(
                     "/llms.txt",

@@ -2,11 +2,30 @@
 
 Glama does **not** use the repo `Dockerfile` directly. It generates an image from the Admin → **Dockerfile** form. The base layer already installs `uv` (see generated Dockerfile step 2).
 
-## Common build failure: `pip: not found`
+## Common build failures
+
+### 1. `pip: not found`
 
 **Cause:** Build steps include `pip install uv`, but Glama’s Debian image has **no `pip`** (only `uv` from the install script).
 
 **Fix:** Remove `pip install uv`. Use `uv` directly.
+
+### 2. `No module named 'uvicorn'`
+
+**Cause:** CMD uses bare `python` instead of the venv created by `uv sync`.
+
+**Fix:** Use `/app/.venv/bin/python` in CMD.
+
+### 3. `GET /ping HTTP/1.1 404` → Request timed out
+
+**Cause:** Glama runs `mcp-proxy`, which expects the child process to speak **MCP over stdio**. With `--sse`, the server starts **Streamable HTTP (uvicorn)** on port 8080 instead. `mcp-proxy` never gets JSON-RPC on stdin and times out after 60s. Glama may also probe `GET /ping`, which HTTP mode did not expose (fixed in repo `main` via `/ping` route — still use stdio for Glama).
+
+**Fix:** **Remove `--sse` from CMD arguments** for Glama builds only.
+
+| Deployment | CMD |
+|------------|-----|
+| **Glama verify** | `mcp-proxy` + venv python + **no `--sse`** (stdio) |
+| **Cloud Run / xpay** | venv python + **`--sse`** (HTTP `/mcp`) |
 
 ## Recommended form values
 
@@ -16,10 +35,10 @@ Glama does **not** use the repo `Dockerfile` directly. It generates an image fro
 | Python version | `3.14` |
 | Node.js | default (used for `mcp-proxy`) |
 | **Build steps** | see JSON below |
-| **CMD arguments** | use **venv Python** (see below — not bare `python`) |
+| **CMD arguments** | stdio (no `--sse`) — see below |
 | Pinned SHA | empty (latest `main`) or current head |
 
-### Build steps (copy into Glama)
+### Build steps
 
 ```json
 [
@@ -30,27 +49,20 @@ Glama does **not** use the repo `Dockerfile` directly. It generates an image fro
 
 Do **not** include `pip install uv`.
 
-### CMD arguments (required for health check)
-
-`uv sync` installs into `/app/.venv`. Glama’s default `python` is the system interpreter **without** those packages → `ModuleNotFoundError: No module named 'uvicorn'`.
-
-Use:
+### CMD arguments (Glama — stdio for mcp-proxy)
 
 ```json
 [
   "mcp-proxy",
   "--",
   "/app/.venv/bin/python",
-  "mcp_server_finance.py",
-  "--sse"
+  "mcp_server_finance.py"
 ]
 ```
 
-Do **not** use bare `"python"` (matches repo `Dockerfile` CMD).
+**Do not pass `--sse`** on Glama. Production Cloud Run uses `--sse` in the repo `Dockerfile` instead.
 
 ### Placeholder parameters
-
-Must match **Environment variables JSON schema** `required` keys. Example:
 
 ```json
 {
@@ -61,17 +73,13 @@ Must match **Environment variables JSON schema** `required` keys. Example:
 }
 ```
 
-Use dummy values only — never production secrets.
+Dummy values only — never production secrets.
 
-### Environment schema note
+## After changing settings
 
-Runtime code uses `HMAC_SECRET` for x402, not `X402_KEY`. Glama’s `X402_KEY` is only to satisfy the health-check form; production uses Cloud Run env (see `.env.example`).
-
-## After changing build steps
-
-1. Save the form and confirm the preview Dockerfile has **no** `pip install`.
-2. **Build** (test), then **Build & Release**.
-3. **Repository** → **Sync Server** if the pinned SHA is old.
+1. Save the form; preview CMD must **not** include `--sse`.
+2. **Build**, then **Build & Release**.
+3. **Repository** → **Sync Server** so Glama clones latest `main` (includes `/ping` for HTTP probes).
 
 ## Production traffic
 
