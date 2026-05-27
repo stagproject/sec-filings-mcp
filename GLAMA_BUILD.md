@@ -16,7 +16,7 @@ Glama does **not** use the repo `Dockerfile` directly. It generates an image fro
 | Python version | `3.14` |
 | Node.js | default (used for `mcp-proxy`) |
 | **Build steps** | see JSON below |
-| **CMD arguments** | leave as Glama preview (`mcp-proxy` + `python mcp_server_finance.py --sse`) |
+| **CMD arguments** | use **venv Python** (see below — not bare `python`) |
 | Pinned SHA | empty (latest `main`) or current head |
 
 ### Build steps (copy into Glama)
@@ -29,6 +29,24 @@ Glama does **not** use the repo `Dockerfile` directly. It generates an image fro
 ```
 
 Do **not** include `pip install uv`.
+
+### CMD arguments (required for health check)
+
+`uv sync` installs into `/app/.venv`. Glama’s default `python` is the system interpreter **without** those packages → `ModuleNotFoundError: No module named 'uvicorn'`.
+
+Use:
+
+```json
+[
+  "mcp-proxy",
+  "--",
+  "/app/.venv/bin/python",
+  "mcp_server_finance.py",
+  "--sse"
+]
+```
+
+Do **not** use bare `"python"` (matches repo `Dockerfile` CMD).
 
 ### Placeholder parameters
 
