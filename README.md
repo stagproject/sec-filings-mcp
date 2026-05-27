@@ -6,7 +6,7 @@ SEC EDGAR structured filing MCP for agents: **search_filings**, **get_filing_sam
 |------------|------|
 | Build / handoff | [MCP_FINANCE_BUILD.md](MCP_FINANCE_BUILD.md) |
 | Env template | [.env.example](.env.example) → copy to `.env` |
-| Glama | [glama.json](glama.json) (`maintainers: stagproject`) |
+| Glama | [glama.json](glama.json) (`maintainers: stagproject`); build fix: [GLAMA_BUILD.md](GLAMA_BUILD.md) |
 
 Template reference: `mcp_server.py` (patent MCP, unmodified). **Runtime:** `mcp_server_finance.py`.
 

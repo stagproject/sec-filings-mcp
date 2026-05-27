@@ -222,4 +222,12 @@ c:\AGS\mcp-server-finance\       # ← 本作業場所
 
 ---
 
+## 9. Glama Dockerfile ビルド（2026-05）
+
+Glama Admin → Dockerfile は **リポの `Dockerfile` をそのまま使わない**。ベースレイヤで既に `uv` が入るため、Build steps に **`pip install uv` を入れると `pip: not found` で失敗**する。
+
+正しい Build steps は [GLAMA_BUILD.md](GLAMA_BUILD.md) を参照（`uv sync` のみ）。本番トラフィックは xpay + Cloud Run。
+
+---
+
 *実装 PR 時は特許 `mcp-server` のコミット履歴を参照し、差分を金融専用に保つこと。*
