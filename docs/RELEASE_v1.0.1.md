@@ -1,30 +1,47 @@
-# Release v1.0.1
+# v1.0.1 — SEC EDGAR Filings MCP
 
-## Highlights
+Release focused on **A2A discovery**, **MCP Registry**, and production hardening.
 
-- **A2A Agent Card** at Cloud Run upstream (xpay does not proxy `/.well-known/*`)
-- **MCP Registry** workflow + `server.json` for `io.github.stagproject/sec-filings-mcp`
-- **Cloud Run** redeploy: `GET /ping` → 200, discovery JSON live
+## What's new
+
+- **A2A Agent Card** on Cloud Run upstream (xpay does not proxy `/.well-known/*`)
+- **MCP Registry:** `io.github.stagproject/sec-filings-mcp` (active)
+- **Cloud Run:** `GET /ping` health check; discovery JSON at upstream
+- **Production pricing:** `FINANCE_FILING_PRICE_USD=5.00` (was test `0.000001`)
 - Docs: [A2A.md](A2A.md), [MCP_REGISTRY.md](MCP_REGISTRY.md)
 
-## URLs
+## Tools (3)
 
-| Purpose | URL |
-|---------|-----|
-| MCP (production) | `https://sec-edgar-filings.mcp.xpay.sh/mcp?key=YOUR_XPAY_KEY` |
-| A2A Agent Card | `https://sec-filings-mcp-1065601264332.us-central1.run.app/.well-known/agent-card.json` |
-| mcp.json | `https://sec-filings-mcp-1065601264332.us-central1.run.app/.well-known/mcp.json` |
-| Health | `https://sec-filings-mcp-1065601264332.us-central1.run.app/ping` |
-| GitHub | https://github.com/stagproject/sec-filings-mcp |
+| Tool | Purpose | Cost |
+|------|---------|------|
+| **search_filings** | Catalog search (`fi_listings_portfolio`). ≥1 filter required. | xpay per-call |
+| **get_filing_sample** | Free compact preview by `document_id`. | $0 |
+| **purchase_filing** | Full JSON via MPP v1.0 x402 (Polygon USDC). | xpay + **$5** on-chain |
 
-## MCP Registry
+**Workflow:** `search_filings` → `get_filing_sample` → `purchase_filing`.
 
-If GitHub Actions OIDC publish failed, run once locally:
+## Connect (xpay)
 
-```powershell
-cd c:\AGS\mcp-server-finance
-.\mcp-publisher.exe login github
-.\mcp-publisher.exe publish
+```
+https://sec-edgar-filings.mcp.xpay.sh/mcp?key=YOUR_XPAY_KEY
 ```
 
-Then verify: `curl "https://registry.modelcontextprotocol.io/v0/servers?search=sec-filings-mcp"`
+## Discovery
+
+| Resource | URL |
+|----------|-----|
+| MCP Registry | `io.github.stagproject/sec-filings-mcp` |
+| A2A Agent Card | https://sec-filings-mcp-1065601264332.us-central1.run.app/.well-known/agent-card.json |
+| mcp.json | https://sec-filings-mcp-1065601264332.us-central1.run.app/.well-known/mcp.json |
+| Health | https://sec-filings-mcp-1065601264332.us-central1.run.app/ping |
+| Glama | https://glama.ai/mcp/servers (search `sec-filings-mcp`) |
+
+## Upstream
+
+```
+https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp
+```
+
+## License
+
+MIT
