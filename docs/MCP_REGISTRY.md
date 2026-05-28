@@ -32,6 +32,9 @@ On git tag `v*` (e.g. `v1.0.1`), GitHub Actions workflow `.github/workflows/publ
 
 ## server.json
 
-Configured at repo root — remote URL:
+Configured at repo root:
 
-`https://sec-edgar-filings.mcp.xpay.sh/mcp`
+- **xpay:** `https://sec-edgar-filings.mcp.xpay.sh/mcp` (+ `?key=` per Registry `headers`)
+- **upstream:** `https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp`
+
+After editing `server.json`, bump `version` and run `mcp-publisher publish`.

@@ -1,8 +1,9 @@
 {
-  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-29/server.schema.json",
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.stagproject/sec-filings-mcp",
-  "version": "1.0.1",
-  "description": "SEC EDGAR MCP: search, preview, and purchase filings. x402 USDC on Polygon. Production URL via xpay.",
+  "title": "SEC EDGAR Filings MCP",
+  "version": "1.0.2",
+  "description": "SEC EDGAR MCP: search, preview, purchase filings. x402 USDC on Polygon. xpay + Cloud Run upstream.",
   "repository": {
     "url": "https://github.com/stagproject/sec-filings-mcp",
     "source": "github"
@@ -10,7 +11,20 @@
   "remotes": [
     {
       "type": "streamable-http",
-      "url": "https://sec-edgar-filings.mcp.xpay.sh/mcp"
+      "url": "https://sec-edgar-filings.mcp.xpay.sh/mcp",
+      "headers": [
+        {
+          "name": "key",
+          "description": "xpay.tools API key (query param). Get one at https://xpay.tools — append as ?key=YOUR_XPAY_KEY to the MCP URL.",
+          "isRequired": true,
+          "isSecret": true
+        }
+      ]
+    },
+    {
+      "type": "streamable-http",
+      "url": "https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp",
+      "description": "Direct Cloud Run upstream (discovery JSON at same host /.well-known/*). No xpay key required for tools/list; purchase_filing still uses x402."
     }
   ]
 }

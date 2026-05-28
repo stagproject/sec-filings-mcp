@@ -9,6 +9,7 @@ SEC EDGAR structured filing MCP for agents: **search_filings**, **get_filing_sam
 | Glama | [glama.json](glama.json) (`maintainers: stagproject`); build fix: [GLAMA_BUILD.md](GLAMA_BUILD.md) |
 | A2A / x402 | [docs/A2A.md](docs/A2A.md) — Agent Card + payment mapping |
 | MCP Registry | `io.github.stagproject/sec-filings-mcp` — [docs/MCP_REGISTRY.md](docs/MCP_REGISTRY.md) |
+| Discovery URLs | [docs/DISCOVERY.md](docs/DISCOVERY.md) |
 
 Template reference: `mcp_server.py` (patent MCP, unmodified). **Runtime:** `mcp_server_finance.py`.
 
