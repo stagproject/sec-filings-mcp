@@ -2,10 +2,12 @@
   "name": "SEC Filings Agent Marketplace",
   "description": "SEC EDGAR filing search and purchase for AI agents: 10-K, 10-Q, CompanyFacts metrics, evidence_verified causality_events. x402 on-chain delivery on Polygon.",
   "url": "https://sec-edgar-filings.mcp.xpay.sh/mcp",
+  "trialUrl": "https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp",
   "transport": "streamable-http",
   "authentication": {
     "type": "query",
-    "parameter": "key"
+    "parameter": "key",
+    "note": "Required for xpay proxy only; trialUrl works without key for search_filings and get_filing_sample"
   },
   "keywords": [
     "sec",

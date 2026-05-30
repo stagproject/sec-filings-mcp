@@ -651,6 +651,9 @@ if __name__ == "__main__":
                     "status": "healthy",
                     "mcp_endpoint": PUBLIC_MCP_URL,
                     "public_connect_url": f"{PUBLIC_MCP_URL}?key=YOUR_XPAY_KEY",
+                    "trial_connect_url": "https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp",
+                    "glama_try_url": "https://glama.ai/mcp/servers/stagproject/sec-filings-mcp",
+                    "try_without_xpay_doc": "https://github.com/stagproject/sec-filings-mcp/blob/main/docs/TRY_WITHOUT_XPAY.md",
                     "xpay_explore": "https://xpay.tools/explore",
                     "discovery": {
                         "llms_txt": "/llms.txt",

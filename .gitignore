@@ -10,3 +10,5 @@ test_result_*.json
 test_results/
 gcp_credentials.json
 .mcpregistry_*
+mcp-publisher.exe
+mcp-publisher.tar.gz

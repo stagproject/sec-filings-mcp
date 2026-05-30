@@ -24,7 +24,7 @@
     {
       "type": "streamable-http",
       "url": "https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp",
-      "description": "Direct Cloud Run upstream (discovery JSON at same host /.well-known/*). No xpay key required for tools/list; purchase_filing still uses x402."
+      "description": "Trial upstream: no xpay API key for search_filings and get_filing_sample. Discovery at /.well-known/*. purchase_filing uses x402 USDC on Polygon. See docs/TRY_WITHOUT_XPAY.md."
     }
   ]
 }

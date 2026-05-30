@@ -10,6 +10,22 @@ SEC EDGAR structured filing MCP for equity research agents, quants, and LLM work
 
 ## Connect
 
+**Trial (no xpay key)** — catalog + free sample:
+
+```json
+{
+  "mcpServers": {
+    "sec-filings-trial": {
+      "url": "https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp"
+    }
+  }
+}
+```
+
+Or use [Glama Try in Browser](https://glama.ai/mcp/servers/stagproject/sec-filings-mcp).
+
+**Production (xpay key required)**:
+
 ```json
 {
   "mcpServers": {
@@ -20,7 +36,7 @@ SEC EDGAR structured filing MCP for equity research agents, quants, and LLM work
 }
 ```
 
-API key: https://xpay.tools
+API key: https://xpay.tools — `search_filings` / `get_filing_sample` can be $0 per call on xpay; key still required.
 
 ## A2A discovery
 

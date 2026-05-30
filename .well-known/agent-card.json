@@ -37,7 +37,7 @@
     {
       "url": "https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp",
       "transport": "HTTP+JSON",
-      "description": "MCP Streamable HTTP upstream (Cloud Run). Agent Card and mcp.json served on same host."
+      "description": "MCP Streamable HTTP upstream (Cloud Run). No xpay API key for search_filings / get_filing_sample. Agent Card and mcp.json on same host."
     }
   ],
   "securitySchemes": {
@@ -45,10 +45,10 @@
       "type": "apiKey",
       "in": "query",
       "name": "key",
-      "description": "xpay.tools API key for MCP proxy access"
+      "description": "xpay.tools API key — required only for sec-edgar-filings.mcp.xpay.sh proxy, not Cloud Run upstream"
     }
   },
-  "securityRequirements": [{ "xpayApiKey": [] }],
+  "securityRequirements": [],
   "skills": [
     {
       "id": "search_filings",
@@ -91,10 +91,13 @@
   "mcp": {
     "transport": "streamable-http",
     "connectUrl": "https://sec-edgar-filings.mcp.xpay.sh/mcp?key=YOUR_XPAY_KEY",
+    "trialConnectUrl": "https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp",
+    "glamaTryUrl": "https://glama.ai/mcp/servers/stagproject/sec-filings-mcp",
     "registry": "io.github.stagproject/sec-filings-mcp",
     "discovery": {
       "agentCard": "https://sec-filings-mcp-1065601264332.us-central1.run.app/.well-known/agent-card.json",
-      "mcpJson": "https://sec-filings-mcp-1065601264332.us-central1.run.app/.well-known/mcp.json"
+      "mcpJson": "https://sec-filings-mcp-1065601264332.us-central1.run.app/.well-known/mcp.json",
+      "tryWithoutXpay": "https://github.com/stagproject/sec-filings-mcp/blob/main/docs/TRY_WITHOUT_XPAY.md"
     }
   }
 }

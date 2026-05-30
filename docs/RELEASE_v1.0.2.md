@@ -8,9 +8,19 @@
 
 ## Republish MCP Registry
 
+**v1.0.2** was published via GitHub Actions on tag `v1.0.2` (workflow `publish-mcp.yml`). No local CLI required for that release.
+
+For the next bump, either push a new tag `v*` (OIDC, no browser) or use the CLI in repo root:
+
 ```powershell
-mcp-publisher login github
-mcp-publisher publish
+# One-time: download CLI (Windows has no global `mcp-publisher` by default)
+curl.exe -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_windows_amd64.tar.gz" -o mcp-publisher.tar.gz
+tar -xzf mcp-publisher.tar.gz mcp-publisher.exe
+Remove-Item mcp-publisher.tar.gz
+
+cd c:\AGS\mcp-server-finance
+.\mcp-publisher.exe login github
+.\mcp-publisher.exe publish
 ```
 
 ## Deploy

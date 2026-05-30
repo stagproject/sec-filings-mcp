@@ -1,0 +1,22 @@
+{
+  "_comment": "Glama Admin → sec-filings-mcp → Dockerfile タブにコピペ。Build & Release 前に CMD に --sse が無いことを確認。",
+  "baseImage": "debian:trixie-slim",
+  "pythonVersion": "3.14",
+  "buildSteps": [
+    "apt-get update && apt-get install -y --no-install-recommends build-essential git libgmp-dev autoconf automake libtool pkg-config python3-dev",
+    "uv sync --frozen --no-cache"
+  ],
+  "cmdArguments": [
+    "mcp-proxy",
+    "--",
+    "/app/.venv/bin/python",
+    "mcp_server_finance.py"
+  ],
+  "placeholderEnv": {
+    "SUPABASE_URL": "https://placeholder.supabase.co",
+    "SUPABASE_SERVICE_ROLE_KEY": "placeholder-service-role-key",
+    "X402_KEY": "placeholder-for-glama-health-check-only",
+    "PORT": "8080"
+  },
+  "doNotInclude": ["pip install uv", "--sse"]
+}

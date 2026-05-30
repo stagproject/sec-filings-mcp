@@ -1,9 +1,13 @@
 ﻿# sec-filings-mcp
 
+[![SEC EDGAR Filings MCP](https://glama.ai/mcp/servers/stagproject/sec-filings-mcp/badges/card.svg)](https://glama.ai/mcp/servers/stagproject/sec-filings-mcp)
+
 SEC EDGAR structured filing MCP for agents: **search_filings**, **get_filing_sample**, **purchase_filing**. Data lives in Supabase views (`fi_listings_portfolio`, `fi_listings_portfolio_compact`) populated by the [finance-factory](https://github.com/stagproject) pipeline.
 
 | Read first | File |
 |------------|------|
+| **Try without xpay key** | [docs/TRY_WITHOUT_XPAY.md](docs/TRY_WITHOUT_XPAY.md) — Glama sandbox or Cloud Run upstream |
+| Distribution (you vs repo) | [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md) |
 | Build / handoff | [MCP_FINANCE_BUILD.md](MCP_FINANCE_BUILD.md) |
 | Env template | [.env.example](.env.example) → copy to `.env` |
 | Glama | [glama.json](glama.json) (`maintainers: stagproject`); build fix: [GLAMA_BUILD.md](GLAMA_BUILD.md) |
@@ -23,14 +27,25 @@ Template reference: `mcp_server.py` (patent MCP, unmodified). **Runtime:** `mcp_
 
 Native A2A JSON-RPC task API is on the roadmap; today agents invoke via **MCP Streamable HTTP**. Details: [docs/A2A.md](docs/A2A.md).
 
-## Connect (public)
+## Try first (no xpay API key)
+
+| Path | URL / action |
+|------|----------------|
+| **Glama sandbox** | [Open server](https://glama.ai/mcp/servers/stagproject/sec-filings-mcp) → **Try in Browser** |
+| **Cloud Run trial** | `https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp` — `search_filings` + `get_filing_sample` without `?key=` |
+
+Details: [docs/TRY_WITHOUT_XPAY.md](docs/TRY_WITHOUT_XPAY.md).  
+xpay proxy always needs a key; per-tool **$0** is allowed on xpay ([docs](https://docs.xpay.sh/en/tools/publish/pricing-your-tools)) but is not the same as “no signup.”
+
+## Connect (production)
 
 | Endpoint | URL |
 |----------|-----|
-| **xpay (recommended)** | `https://sec-edgar-filings.mcp.xpay.sh/mcp?key=YOUR_XPAY_KEY` |
+| **xpay (billing + catalog)** | `https://sec-edgar-filings.mcp.xpay.sh/mcp?key=YOUR_XPAY_KEY` |
 | Cloud Run (upstream) | `https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp` |
 
-Register / manage on [xpay.tools](https://xpay.tools). Slug: `sec-edgar-filings`.
+Register / manage on [xpay.tools](https://xpay.tools). Slug: `sec-edgar-filings`.  
+Publisher checklist (finance collection, awesome list): [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md).
 
 ## Local dev
 
@@ -66,7 +81,7 @@ Set env vars from `.env` (not committed). Do not deploy `.env.cloudrun.yaml` to 
 
 ## Glama
 
-Listed at [glama.ai/mcp/servers](https://glama.ai/mcp/servers) — search `sec-filings-mcp` / `stagproject`. Profile completion and Glama release done.
+Listed at [glama.ai/mcp/servers/stagproject/sec-filings-mcp](https://glama.ai/mcp/servers/stagproject/sec-filings-mcp) — use **Try in Browser** for a no-key sandbox; production traffic uses xpay or Cloud Run above.
 
 ## MCP Registry
 

@@ -37,4 +37,7 @@ Configured at repo root:
 - **xpay:** `https://sec-edgar-filings.mcp.xpay.sh/mcp` (+ `?key=` per Registry `headers`)
 - **upstream:** `https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp`
 
-After editing `server.json`, bump `version` and run `mcp-publisher publish`.
+After editing `server.json`, bump `version` and either:
+
+- Push git tag `vX.Y.Z` (recommended — uses `.github/workflows/publish-mcp.yml` + OIDC), or
+- Run `.\mcp-publisher.exe publish` from repo root (see install block above; Windows has no `mcp-publisher` on PATH unless you add it).

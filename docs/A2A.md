@@ -15,6 +15,10 @@ MCP and A2A are **complementary** ([A2A protocol](https://a2a-protocol.org/)): M
 
 ## Connect today (MCP)
 
+**Trial (no xpay key):** [TRY_WITHOUT_XPAY.md](TRY_WITHOUT_XPAY.md) — Cloud Run `https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp` or Glama Try in Browser.
+
+**Production (xpay key):**
+
 ```json
 {
   "mcpServers": {

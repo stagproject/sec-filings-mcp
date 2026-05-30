@@ -1,11 +1,17 @@
 # SEC Filings Agent Marketplace — EDGAR Structured Data MCP
 
-> AI-ready SEC filing JSON (10-K, 10-Q, 8-K): CompanyFacts metrics, evidence_verified causality_events, agent summaries. Connect via xpay.tools (x402 + MCP).
+> AI-ready SEC filing JSON (10-K, 10-Q, 8-K): CompanyFacts metrics, evidence_verified causality_events, agent summaries. MCP + x402 on Polygon.
 
-## Primary connection (xpay — recommended)
+## Try without xpay API key
+
+- **Glama sandbox:** https://glama.ai/mcp/servers/stagproject/sec-filings-mcp → Try in Browser
+- **Cloud Run trial MCP:** `https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp` (search_filings + get_filing_sample; purchase_filing = x402 USDC)
+- **Guide:** https://github.com/stagproject/sec-filings-mcp/blob/main/docs/TRY_WITHOUT_XPAY.md
+
+## Production connection (xpay — key required)
 
 - **MCP URL:** `https://sec-edgar-filings.mcp.xpay.sh/mcp?key=YOUR_XPAY_KEY`
-- **Get API key:** https://xpay.tools
+- **Get API key:** https://xpay.tools (free credits; per-tool $0 allowed for search/sample per xpay pricing docs)
 - **Discover:** `xpay_discover(query: "SEC EDGAR 10-K CompanyFacts")` on `https://mcp.xpay.sh/mcp?key=YOUR_XPAY_KEY`
 
 ## Machine-readable discovery

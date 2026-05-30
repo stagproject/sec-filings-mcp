@@ -2,12 +2,15 @@
 
 Canonical URLs for clients, registries, and A2A-aware agents.
 
+**Try without xpay key:** [TRY_WITHOUT_XPAY.md](TRY_WITHOUT_XPAY.md) · **Growth plan:** [DISTRIBUTION.md](DISTRIBUTION.md)
+
 ## MCP (production invoke)
 
 | Endpoint | URL |
 |----------|-----|
-| xpay (recommended) | `https://sec-edgar-filings.mcp.xpay.sh/mcp?key=YOUR_XPAY_KEY` |
-| Cloud Run upstream | `https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp` |
+| xpay (billing + xpay catalog) | `https://sec-edgar-filings.mcp.xpay.sh/mcp?key=YOUR_XPAY_KEY` |
+| Cloud Run upstream (trial: no xpay key) | `https://sec-filings-mcp-1065601264332.us-central1.run.app/mcp` |
+| Glama sandbox (no xpay key) | https://glama.ai/mcp/servers/stagproject/sec-filings-mcp → Try in Browser |
 
 xpay does **not** proxy `/.well-known/*` (403). Use Cloud Run for machine-readable discovery files.
 
@@ -30,7 +33,8 @@ xpay does **not** proxy `/.well-known/*` (403). Use Cloud Run for machine-readab
 Republish after `server.json` changes:
 
 ```powershell
-mcp-publisher publish
+# Prefer: git tag vX.Y.Z && git push origin vX.Y.Z  (GitHub Actions publishes)
+# Or locally: .\mcp-publisher.exe publish  (see docs/MCP_REGISTRY.md)
 ```
 
 ## Signed Agent Card (roadmap)
