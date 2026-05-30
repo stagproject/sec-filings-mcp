@@ -4,10 +4,17 @@ Target repo: https://github.com/punkpeye/awesome-mcp-servers
 
 Pick section **Finance** or **Data**. One-line list entry + optional longer blurb for PR body.
 
+## Where to insert
+
+- **Section:** `### 💰 Finance & Fintech` in https://github.com/punkpeye/awesome-mcp-servers/blob/main/README.md
+- **After line:** `[staccDOTsol/staccbot-tg](...)`
+- **Before line:** `[stefan-xyz/mcp-server-runescape](...)`
+- **Full steps:** [STAGE_C_AWESOME_PR.md](STAGE_C_AWESOME_PR.md)
+
 ## List line (markdown)
 
 ```markdown
-- [SEC EDGAR Filings MCP](https://github.com/stagproject/sec-filings-mcp) — Search 10-K/10-Q, free filing preview, full JSON via x402 USDC. Try on [Glama](https://glama.ai/mcp/servers/stagproject/sec-filings-mcp) or Cloud Run upstream without xpay key ([docs](https://github.com/stagproject/sec-filings-mcp/blob/main/docs/TRY_WITHOUT_XPAY.md)). Production: `https://sec-edgar-filings.mcp.xpay.sh/mcp?key=YOUR_XPAY_KEY`.
+- [stagproject/sec-filings-mcp](https://github.com/stagproject/sec-filings-mcp) [![stagproject/sec-filings-mcp MCP server](https://glama.ai/mcp/servers/stagproject/sec-filings-mcp/badges/score.svg)](https://glama.ai/mcp/servers/stagproject/sec-filings-mcp) 📇 ☁️ - SEC EDGAR MCP for agents: search 10-K/10-Q, free sample preview, full filing JSON via x402 USDC on Polygon. xpay: `sec-edgar-filings`. Trial without xpay key: [docs](https://github.com/stagproject/sec-filings-mcp/blob/main/docs/TRY_WITHOUT_XPAY.md). Registry: `io.github.stagproject/sec-filings-mcp`.
 ```
 
 ## PR title

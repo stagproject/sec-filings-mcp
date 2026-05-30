@@ -7,7 +7,7 @@ SEC EDGAR structured filing MCP for agents: **search_filings**, **get_filing_sam
 | Read first | File |
 |------------|------|
 | **Try without xpay key** | [docs/TRY_WITHOUT_XPAY.md](docs/TRY_WITHOUT_XPAY.md) — Glama sandbox or Cloud Run upstream |
-| Distribution (you vs repo) | [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md) |
+| Distribution (you vs repo) | [docs/DISTRIBUTION.md](docs/DISTRIBUTION.md) · [docs/HANDOFF.md](docs/HANDOFF.md) |
 | Build / handoff | [MCP_FINANCE_BUILD.md](MCP_FINANCE_BUILD.md) |
 | Env template | [.env.example](.env.example) → copy to `.env` |
 | Glama | [glama.json](glama.json) (`maintainers: stagproject`); build fix: [GLAMA_BUILD.md](GLAMA_BUILD.md) |
