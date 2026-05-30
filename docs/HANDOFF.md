@@ -81,13 +81,11 @@
 
 ---
 
-### 4. D — チュートリアル（任意・C の後）
+### 4. D — Zenn チュートリアル（任意・推奨）
 
-Zenn / dev.to / GitHub Discussions に1本:
+**手順 + コピペ本文:** [ZENN_TUTORIAL.md](ZENN_TUTORIAL.md)（初回 60〜90分）
 
-- タイトル例: *SEC EDGAR MCP を xpay キーなしで試す*  
-- リンク: https://github.com/stagproject/sec-filings-mcp/blob/main/docs/TRY_WITHOUT_XPAY.md  
-- 例: `search_filings` + `{"ticker":"AAPL","form_type":"10-K","limit":3}`  
+投稿後、公開 URL を README Discussions や X に1行貼ると余計な露出になる（任意）。
 
 ---
 
