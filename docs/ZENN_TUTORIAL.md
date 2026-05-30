@@ -1,14 +1,53 @@
 # Zenn 投稿用 — SEC EDGAR MCP を xpay キーなしで試す（5分）
 
-**あなたがやること:** 下の「--- ここから記事本文 ---」〜「--- ここまで ---」を Zenn に貼る。  
+**あなたがやること:** ① プロフィール設定 → ② 記事本文を貼る。  
 **所要:** 初回 60〜90分（アカウント作成含む）。2回目以降は 15分。
 
 ---
 
-## Zenn 初めての手順
+## 自己紹介は日本語？英語？
+
+| 場所 | おすすめ | 理由 |
+|------|----------|------|
+| **Zenn プロフィール** | **日本語** | Zenn の読者は日本語が中心 |
+| **記事の冒頭** | **日本語** | 本文も日本語で統一 |
+| **GitHub / awesome / xpay** | **英語**（済み） | 海外メンテ・レジストリ向け |
+
+記事だけ日本語、技術リンクは英語、で問題ありません。下の **プロフィール用** と **記事冒頭用** をそのままコピペしてください。
+
+---
+
+## ① Zenn プロフィール（アカウント設定）
+
+サインアップ後: **ダッシュボード** → 左 **設定** → **プロフィール**
+
+| 項目 | コピペする内容 |
+|------|----------------|
+| **ユーザー名** | `stagproject`（GitHub と揃える・取れなければ近い名前） |
+| **表示名** | `stagproject` |
+| **自己紹介（160字目安）** | 下記ブロック |
+
+### プロフィール自己紹介（コピペ用）
+
+```text
+SEC EDGAR 提出書類をエージェント向け JSON で扱う MCP「sec-filings-mcp」の開発・公開をしています。search → 無料 sample → x402 でフル JSON という三段構成。MCP Registry / Glama / xpay 掲載。エージェント・金融データ・MCP の接続点が好きです。
+```
+
+### プロフィール用リンク（任意）
+
+| ラベル | URL |
+|--------|-----|
+| GitHub | https://github.com/stagproject |
+| 本リポ | https://github.com/stagproject/sec-filings-mcp |
+| Glama | https://glama.ai/mcp/servers/stagproject/sec-filings-mcp |
+
+---
+
+## ② Zenn 初めての手順（記事投稿）
 
 1. https://zenn.dev に **GitHub / X / Google** でサインアップ（無料）
-2. 右上アイコン → **ダッシュボード**
+2. ① のプロフィールを保存
+3. 右上アイコン → **ダッシュボード**
 3. **新規投稿** → **テキストエディタで投稿**（GitHub 連携は今回不要）
 4. **タイトル** に下記タイトルを貼る
 5. 本文欄に「記事本文」をすべて貼る
@@ -33,6 +72,16 @@
 ---
 
 --- ここから記事本文 ---
+
+## 自己紹介
+
+**stagproject** です。[sec-filings-mcp](https://github.com/stagproject/sec-filings-mcp) を公開・メンテしています。
+
+米国 SEC の 10-K / 10-Q などを、LLM がそのまま使えるフラット JSON（CompanyFacts 由来の指標、提出書類メタデータ、エージェント向けサマリー）として配る MCP サーバーです。いまは **MCP Registry**・**Glama**・**xpay**（slug: `sec-edgar-filings`）に載せており、[awesome-mcp-servers への PR](https://github.com/punkpeye/awesome-mcp-servers/pull/7145) も出しています。
+
+「エージェントが EDGAR を検索して、無料で中身を少し見て、必要なら x402 でフルデータを買う」——その最短ルートを、**xpay の API キーなし**で試せる手順をこの記事にまとめました。同じことを自分で調べるより短いはずなので、うまくいったらスター・Issue・感想をもらえると助かります。
+
+---
 
 ## はじめに
 
@@ -138,7 +187,19 @@ https://sec-edgar-filings.mcp.xpay.sh/mcp?key=YOUR_XPAY_KEY
 
 - **xpay キーなし**でも Cloud Run upstream で **検索 + 無料サンプル** まで試せる
 - 本番トラフィック・課金は xpay 経由が推奨
-- フィードバックは GitHub Issues または xpay Discord の showcase へ歓迎
+- フィードバックは [GitHub Issues](https://github.com/stagproject/sec-filings-mcp/issues) または xpay Discord の `#showcase` へ歓迎
+
+## おわりに
+
+次は xpay キーを取って本番 URL に繋ぐか、`purchase_filing` で x402 フル JSON まで試すか、は需要次第で記事にします。質問は Issue か Zenn のコメントでどうぞ。
+
+---
+
+### 英語1行（プロフィールや X 用・記事には不要）
+
+```text
+Maintainer of sec-filings-mcp — agent-native SEC EDGAR JSON (search, free sample, x402 full row). MCP Registry · Glama · xpay.
+```
 
 --- ここまで記事本文 ---
 
