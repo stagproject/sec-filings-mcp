@@ -35,7 +35,7 @@ Verify:
 ### B2. Finance collection request → **[XPAY_OUTREACH.md](XPAY_OUTREACH.md)**
 
 1. **Email** → `support@xpay.sh`（本文コピペ）
-2. **Discord** → https://discord.com/invite/vukXDGT7n5 → `#api-monetization`（短文コピペ）
+2. **Discord** → `#showcase`（紹介）+ 任意 `#agentic-payments`（掲載手順の質問）— [XPAY_OUTREACH.md](XPAY_OUTREACH.md)
 3. 1週間後: https://finance.mcp.xpay.sh/llms.txt で `sec-edgar` を検索
 
 ## 4. Stage C — awesome-mcp-servers (~10 min) → index **28–42**
