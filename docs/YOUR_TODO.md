@@ -30,18 +30,13 @@ Verify:
 
 ## 3. Stage B — xpay (~15 min) → index **22–35**
 
-### B1. Dashboard pricing
+### B1. Dashboard pricing — done if all tools $0 + Save Pricing
 
-1. https://app.xpay.sh (or xpay.tools) → MCP server **sec-edgar-filings**
-2. Set **search_filings** = **$0**
-3. Set **get_filing_sample** = **$0**
-4. Leave **purchase_filing** as configured (on-chain ~$5 still applies on upstream)
+### B2. Finance collection request → **[XPAY_OUTREACH.md](XPAY_OUTREACH.md)**
 
-### B2. Finance collection request
-
-1. Open [xpay-collection-request.md](xpay-collection-request.md)
-2. Copy the block → xpay **Discord** (https://discord.com/invite/vukXDGT7n5) or support
-3. Wait for confirmation that tools appear on `finance.mcp.xpay.sh`
+1. **Email** → `support@xpay.sh`（本文コピペ）
+2. **Discord** → https://discord.com/invite/vukXDGT7n5 → `#api-monetization`（短文コピペ）
+3. 1週間後: https://finance.mcp.xpay.sh/llms.txt で `sec-edgar` を検索
 
 ## 4. Stage C — awesome-mcp-servers (~10 min) → index **28–42**
 

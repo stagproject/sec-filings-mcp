@@ -1,5 +1,7 @@
 # xpay finance collection — request template (you send)
 
+**Step-by-step (email + Discord):** [XPAY_OUTREACH.md](XPAY_OUTREACH.md)
+
 Copy into xpay Discord / support / publisher onboarding. Edit bracketed fields.
 
 ---
